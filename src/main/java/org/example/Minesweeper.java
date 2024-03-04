@@ -98,56 +98,29 @@ public class Minesweeper {
         if (remaining == 0) {
             gameOver = true;
             System.out.println("You Win!");
-            System.out.println("\n" +
-                    " ___ ___  ____  ____     ___  _____ __    __    ___    ___  ____   ___  ____  \n" +
-                    "|   |   ||    ||    \\   /  _]/ ___/|  |__|  |  /  _]  /  _]|    \\ /  _]|    \\ \n" +
-                    "| _   _ | |  | |  _  | /  [_(   \\_ |  |  |  | /  [_  /  [_ |  o  )  [_ |  D  )\n" +
-                    "|  \\_/  | |  | |  |  ||    _]\\__  ||  |  |  ||    _]|    _]|   _/    _]|    / \n" +
-                    "|   |   | |  | |  |  ||   [_ /  \\ ||  `  '  ||   [_ |   [_ |  | |   [_ |    \\ \n" +
-                    "|   |   | |  | |  |  ||     |\\    | \\      / |     ||     ||  | |     ||  .  \\\n" +
-                    "|___|___||____||__|__||_____| \\___|  \\_/\\_/  |_____||_____||__| |_____||__|\\_|\n" +
-                    "                                                                              ");
         }
     }
 
     public static void main(String[] args) {
-        Scanner reader = new Scanner(System.in);
-
+        Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter the size of the field: ");
-        int size = getPositiveInt(reader);
+        int size = scanner.nextInt();
         System.out.print("Enter the number of mines: ");
-        int mines = getPositiveInt(reader);
+        int mines = scanner.nextInt();
 
         Minesweeper minesweeper = new Minesweeper(size, mines);
 
         while (!minesweeper.gameOver) {
             minesweeper.printField();
             System.out.print("Enter row and column numbers: ");
-            int x = getPositiveInt(reader);
-            int y = getPositiveInt(reader);
+            int x = scanner.nextInt();
+            int y = scanner.nextInt();
             minesweeper.reveal(x, y);
         }
 
         minesweeper.printField();
-        reader.close();
-
-    }
-        public static int getPositiveInt(Scanner reader){
-            int value;
-            while (true) {
-                while (!reader.hasNextInt()) {
-                    System.out.println("That's not a number!");
-                    reader.next();
-                }
-                value = reader.nextInt();
-                if (value <= 0) {
-                    System.out.println("Please enter a positive number");
-                } else {
-                    break;
-                }
-            }
-            return value;
+        scanner.close();
     }
 }
 

@@ -121,6 +121,7 @@ public class Minesweeper {
 
         minesweeper.printField();
         scanner.close();
+
     }
 }
 

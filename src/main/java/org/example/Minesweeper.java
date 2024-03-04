@@ -65,7 +65,7 @@ public class Minesweeper {
                         System.out.print(tile[i][j] + " ");
                     }
                 } else {
-                    System.out.print("[] ");
+                    System.out.print("[]");
                 }
             }
             System.out.println();
@@ -102,25 +102,42 @@ public class Minesweeper {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner reader = new Scanner(System.in);
 
         System.out.print("Enter the size of the field: ");
-        int size = scanner.nextInt();
+        int size = getPositiveInt(reader);
         System.out.print("Enter the number of mines: ");
-        int mines = scanner.nextInt();
+        int mines = getPositiveInt(reader);
 
         Minesweeper minesweeper = new Minesweeper(size, mines);
 
         while (!minesweeper.gameOver) {
             minesweeper.printField();
             System.out.print("Enter row and column numbers: ");
-            int x = scanner.nextInt();
-            int y = scanner.nextInt();
+            int x = reader.nextInt();
+            int y = reader.nextInt();
             minesweeper.reveal(x, y);
         }
 
         minesweeper.printField();
-        scanner.close();
+        reader.close();
+
+    }
+    public static int getPositiveInt(Scanner reader) {
+        int value;
+        while (true) {
+            while (!reader.hasNextInt()) {
+                System.out.println("That's not a number!");
+                reader.next();
+            }
+            value = reader.nextInt();
+            if (value <= 0) {
+                System.out.println("Please enter a positive number");
+            } else {
+                break;
+            }
+        }
+        return value;
 
     }
 }

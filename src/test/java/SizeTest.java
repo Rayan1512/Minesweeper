@@ -1,11 +1,7 @@
 import org.example.Minesweeper;
 import org.junit.jupiter.api.*;
 
-import javax.imageio.stream.MemoryCacheImageInputStream;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-
-public class sizetest {
+public class SizeTest {
     @Test //checking that the size of the grid is correct
 
     void testPrintField() {

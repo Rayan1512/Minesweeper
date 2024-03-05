@@ -178,6 +178,7 @@ public class Minesweeper {
     public boolean[][] getRevealedGrid(){
         return revealed;
     }
+
 }
 
 

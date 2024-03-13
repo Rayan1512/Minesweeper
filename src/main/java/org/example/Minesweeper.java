@@ -170,7 +170,6 @@ public class Minesweeper {
         }
         return value;
 
-
     }
     public int[][] getNumGrid(){
         return tile;
